@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning View</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <h1>Library</h1>
+    <div id="app">
+        <!-- attribute binding -->
+        <!-- <a v-bind:href="url">Best website ever</a> -->
+
+        <div v-if="showBooks">
+            <ul>
+                <li v-for="book in filteredBooks" :class="{fav: book.isFav}" @click="toggleFav(book)">
+                    <img :src="book.img" :alt="book.title" class="img-books">
+                    <h3>{{book.title}}</h3>
+                    <p>{{book.author}}</p>
+                </li>
+            </ul>
+            <!-- <p>{{books[0].title}} - {{books[0].author}} - {{books[0].age}}</p>
+            <p>{{books[1].title}} - {{books[1].author}} - {{books[1].age}}</p>
+            <p>{{books[2].title}} - {{books[2].author}} - {{books[2].age}}</p> -->
+        </div>
+        <!-- <button v-on:click="age++">Increase age</button> -->
+        <!-- <button v-on:click="age--">Decrease age</button> -->
+        <!-- <div @click="changeTitle('Oathbringer')">Change book title</div> -->
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+        <div v-show="showBooks">currently showing book</div>
+
+
+        <!-- mouse event -->
+        <div class="box" @mouseover="handleEvent($event, 5)">mouse over (enter)</div>
+        <div class="box" @mouseleave="handleEvent">mouse leave</div>
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMousemove">position - {{x}}  {{y}}</div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
